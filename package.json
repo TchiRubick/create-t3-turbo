@@ -12,7 +12,6 @@
     "daemon": "turbo daemon clean && turbo daemon start",
     "db:push": "turbo -F @acme/db push",
     "db:pull": "turbo -F @acme/db introspect",
-    "db:generate": "turbo -F @acme/db generate",
     "db:migrate": "turbo -F @acme/db migrate",
     "db:studio": "turbo -F @acme/db studio",
     "dev": "turbo watch dev --continue",
