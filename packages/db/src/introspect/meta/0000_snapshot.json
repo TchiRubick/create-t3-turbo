@@ -7,12 +7,7 @@
   "enums": {
     "public.roles": {
       "name": "roles",
-      "values": [
-        "user",
-        "modo",
-        "admin",
-        "sudo"
-      ],
+      "values": ["user", "modo", "admin", "sudo"],
       "schema": "public"
     }
   },

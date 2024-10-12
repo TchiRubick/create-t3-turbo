@@ -3,7 +3,7 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
 import { cn } from "@acme/ui";
-import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
+import { ThemeProvider } from "@acme/ui/theme";
 import { Toaster } from "@acme/ui/toast";
 
 import { TRPCReactProvider } from "~/trpc/react";
@@ -11,6 +11,8 @@ import { TRPCReactProvider } from "~/trpc/react";
 import "~/app/globals.css";
 
 import { env } from "~/env";
+import { Footer } from "./_components/footer";
+import { NavBar } from "./_components/nav-bar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -50,11 +52,14 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           GeistMono.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider>{props.children}</TRPCReactProvider>
-          <div className="absolute bottom-4 right-4">
-            <ThemeToggle />
-          </div>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <TRPCReactProvider>
+            <div className="flex min-h-screen flex-col">
+              <NavBar />
+              {props.children}
+              <Footer />
+            </div>
+          </TRPCReactProvider>
           <Toaster />
         </ThemeProvider>
       </body>

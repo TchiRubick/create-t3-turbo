@@ -1,4 +1,4 @@
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { pgEnum, pgTable, primaryKey } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -32,10 +32,6 @@ export const User = pgTable("user", (t) => ({
   image: t.varchar({ length: 255 }),
 }));
 
-export const UserRelations = relations(User, ({ many }) => ({
-  accounts: many(Account),
-}));
-
 export const Account = pgTable(
   "account",
   (t) => ({
@@ -64,10 +60,6 @@ export const Account = pgTable(
   }),
 );
 
-export const AccountRelations = relations(Account, ({ one }) => ({
-  user: one(User, { fields: [Account.userId], references: [User.id] }),
-}));
-
 export const Session = pgTable("session", (t) => ({
   sessionToken: t.varchar({ length: 255 }).notNull().primaryKey(),
   userId: t
@@ -75,10 +67,6 @@ export const Session = pgTable("session", (t) => ({
     .notNull()
     .references(() => User.id, { onDelete: "cascade" }),
   expires: t.timestamp({ mode: "date", withTimezone: true }).notNull(),
-}));
-
-export const SessionRelations = relations(Session, ({ one }) => ({
-  user: one(User, { fields: [Session.userId], references: [User.id] }),
 }));
 
 export const Test = pgTable("test", (t) => ({
