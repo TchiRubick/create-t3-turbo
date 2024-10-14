@@ -1,15 +1,13 @@
 import { createEnv } from "@t3-oss/env-nextjs";
-import { vercel } from "@t3-oss/env-nextjs/presets";
 import { z } from "zod";
 
-import { env as authEnv } from "@acme/auth/env";
-
 export const env = createEnv({
-  extends: [authEnv, vercel()],
   shared: {
     NODE_ENV: z
       .enum(["development", "production", "test"])
       .default("development"),
+    VERCEL_ENV: z.string().optional(),
+    VERCEL_URL: z.string().url().optional(),
   },
   /**
    * Specify your server-side environment variables schema here.
@@ -31,7 +29,8 @@ export const env = createEnv({
    */
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-
+    VERCEL_ENV: process.env.VERCEL_ENV,
+    VERCEL_URL: process.env.VERCEL_URL,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   skipValidation:

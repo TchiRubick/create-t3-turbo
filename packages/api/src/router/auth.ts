@@ -1,6 +1,6 @@
 import type { TRPCRouterRecord } from "@trpc/server";
 
-import { invalidateSessionToken } from "@acme/auth";
+import { lucia } from "@acme/lucia";
 
 import { protectedProcedure, publicProcedure } from "../trpc";
 
@@ -15,7 +15,7 @@ export const authRouter = {
     if (!opts.ctx.token) {
       return { success: false };
     }
-    await invalidateSessionToken(opts.ctx.token);
+    await lucia.invalidateSession(opts.ctx.token);
     return { success: true };
   }),
 } satisfies TRPCRouterRecord;

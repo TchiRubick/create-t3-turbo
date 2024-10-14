@@ -10,9 +10,8 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import type { Session } from "@acme/auth";
-import { auth, validateToken } from "@acme/auth";
 import { db } from "@acme/db/client";
+import { lucia } from "@acme/lucia";
 
 /**
  * Isomorphic Session getter for API requests
@@ -21,8 +20,10 @@ import { db } from "@acme/db/client";
  */
 const isomorphicGetSession = async (headers: Headers) => {
   const authToken = headers.get("Authorization") ?? null;
-  if (authToken) return validateToken(authToken);
-  return auth();
+
+  if (authToken) return lucia.validateSession(authToken);
+
+  return null;
 };
 
 /**
@@ -37,10 +38,7 @@ const isomorphicGetSession = async (headers: Headers) => {
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: {
-  headers: Headers;
-  session: Session | null;
-}) => {
+export const createTRPCContext = async (opts: { headers: Headers }) => {
   const authToken = opts.headers.get("Authorization") ?? null;
   const session = await isomorphicGetSession(opts.headers);
 
