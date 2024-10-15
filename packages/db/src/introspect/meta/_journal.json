@@ -15,6 +15,13 @@
       "when": 1728673766177,
       "tag": "0001_icy_typhoid_mary",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1728987008344,
+      "tag": "0002_lyrical_machine_man",
+      "breakpoints": true
     }
   ]
 }

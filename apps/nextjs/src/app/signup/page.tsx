@@ -8,6 +8,9 @@ export default function Page() {
         <label htmlFor="username">Username</label>
         <input name="username" id="username" />
         <br />
+        <label htmlFor="email">Email adress</label>
+        <input name="email" id="email" />
+        <br />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" id="password" />
         <br />

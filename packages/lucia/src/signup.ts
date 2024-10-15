@@ -1,18 +1,13 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { hash } from "@node-rs/argon2";
-import { generateIdFromEntropySize } from "lucia";
 import { z } from "zod";
 
 import { db, User } from "@acme/db";
 
 import { lucia } from "./index";
 
-const userValidation = z
-  .string()
-  .min(3)
-  .max(31)
-  .regex(/^[a-z0-9_-]+$/);
+const userValidation = z.string().min(3).max(31);
 const emailValidation = z.string().email();
 const passwordValidation = z.string().min(6).max(255);
 
@@ -48,7 +43,6 @@ export async function signup(formData: FormData) {
     outputLen: 32,
     parallelism: 1,
   });
-  const userId = generateIdFromEntropySize(10); // 16 characters long
 
   const userUserName = (
     await db.query.User.findFirst({
@@ -70,12 +64,16 @@ export async function signup(formData: FormData) {
     throw new Error("Username already taken");
   }
 
-  await db.insert(User).values({
-    id: userId,
-    username,
-    email,
-    password: passwordHash,
-  });
+  const user = await db
+    .insert(User)
+    .values({
+      username,
+      email,
+      password: passwordHash,
+    })
+    .returning();
+
+  const userId = user[0]?.id ?? "";
 
   const session = await lucia.createSession(userId, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
