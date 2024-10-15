@@ -1,4 +1,4 @@
-import { signup } from "@acme/lucia/signup";
+import { signup } from "@acme/lucia/actions";
 
 export default function Page() {
   return (

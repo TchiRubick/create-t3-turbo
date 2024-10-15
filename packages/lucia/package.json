@@ -5,8 +5,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./signup": "./src/signup.ts",
-    "./signin": "./src/signin.ts"
+    "./actions": "./src/actions/index.ts"
   },
   "license": "MIT",
   "scripts": {

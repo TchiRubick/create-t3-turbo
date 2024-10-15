@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { db } from "@acme/db";
 
-import { lucia } from "./index";
+import { lucia } from "..";
 
 const identifierValidation = z.string().min(3).max(255);
 const passwordValidation = z.string().min(6).max(255);

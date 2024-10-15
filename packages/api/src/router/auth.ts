@@ -8,14 +8,18 @@ export const authRouter = {
   getSession: publicProcedure.query(({ ctx }) => {
     return ctx.session;
   }),
-  getSecretMessage: protectedProcedure.query(() => {
-    return "you can see this secret message!";
+  isLoggedIn: publicProcedure.query(({ ctx }) => {
+    const session = ctx.session.session;
+
+    if (!session) return false;
+
+    if (session.expiresAt <= new Date()) return false;
+
+    return true;
   }),
-  signOut: protectedProcedure.mutation(async (opts) => {
-    if (!opts.ctx.token) {
-      return { success: false };
-    }
-    await lucia.invalidateSession(opts.ctx.token);
+  signOut: protectedProcedure.mutation(async ({ ctx }) => {
+    await lucia.invalidateSession(ctx.token ?? "");
+
     return { success: true };
   }),
 } satisfies TRPCRouterRecord;

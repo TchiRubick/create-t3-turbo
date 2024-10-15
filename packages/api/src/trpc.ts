@@ -6,6 +6,7 @@
  * tl;dr - this is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end
  */
+import { cookies } from "next/headers";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
@@ -18,13 +19,6 @@ import { lucia } from "@acme/lucia";
  * - Expo requests will have a session token in the Authorization header
  * - Next.js requests will have a session token in cookies
  */
-const isomorphicGetSession = async (headers: Headers) => {
-  const authToken = headers.get("Authorization") ?? null;
-
-  if (authToken) return lucia.validateSession(authToken);
-
-  return null;
-};
 
 /**
  * 1. CONTEXT
@@ -39,11 +33,11 @@ const isomorphicGetSession = async (headers: Headers) => {
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  const authToken = opts.headers.get("Authorization") ?? null;
-  const session = await isomorphicGetSession(opts.headers);
+  const authToken = cookies().get(lucia.sessionCookieName)?.value;
+  const session = await lucia.validateSession(authToken ?? "");
 
   const source = opts.headers.get("x-trpc-source") ?? "unknown";
-  console.log(">>> tRPC Request from", source, "by", session?.user);
+  console.log(">>> tRPC Request from", source, "by", session.user);
 
   return {
     session,
@@ -131,7 +125,7 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
 export const protectedProcedure = t.procedure
   .use(timingMiddleware)
   .use(({ ctx, next }) => {
-    if (!ctx.session?.user) {
+    if (!ctx.session.user) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
     return next({

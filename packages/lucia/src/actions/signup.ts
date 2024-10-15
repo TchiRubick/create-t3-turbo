@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { db, User } from "@acme/db";
 
-import { lucia } from "./index";
+import { lucia } from "..";
 
 const userValidation = z.string().min(3).max(31);
 const emailValidation = z.string().email();
@@ -73,9 +73,13 @@ export async function signup(formData: FormData) {
     })
     .returning();
 
-  const userId = user[0]?.id ?? "";
+  if (!user[0]) {
+    throw new Error("Error creating user");
+  }
 
-  const session = await lucia.createSession(userId, {});
+  const { password: _, ...rest } = user[0];
+
+  const session = await lucia.createSession(rest.id, { ...rest });
   const sessionCookie = lucia.createSessionCookie(session.id);
 
   cookies().set(

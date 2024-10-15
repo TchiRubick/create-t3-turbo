@@ -1,3 +1,5 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
 import { Lucia } from "lucia";
 
@@ -29,3 +31,19 @@ declare module "lucia" {
     DatabaseUserAttributes: UserSelect;
   }
 }
+
+export const luciaPageProtector = async (redirectPath = "/") => {
+  const luciaSession = await lucia.validateSession(
+    cookies().get(lucia.sessionCookieName)?.value ?? "",
+  );
+
+  const { session } = luciaSession;
+
+  if (session === null) {
+    redirect(redirectPath);
+  }
+
+  if (session.expiresAt < new Date()) {
+    redirect(redirectPath);
+  }
+};

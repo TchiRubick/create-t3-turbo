@@ -25,7 +25,10 @@ export const CreatePostSchema = createInsertSchema(Post, {
 });
 
 export const User = pgTable("user", (t) => ({
-  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  id: t
+    .text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   username: t.varchar({ length: 255 }).notNull(),
   password: t.varchar({ length: 255 }).notNull(),
   email: t.varchar({ length: 255 }).notNull(),
@@ -45,9 +48,4 @@ export const Session = pgTable("session", (t) => ({
       mode: "date",
     })
     .notNull(),
-}));
-
-export const Test = pgTable("test", (t) => ({
-  id: t.uuid().notNull().primaryKey().defaultRandom(),
-  title: t.varchar({ length: 256 }).notNull(),
 }));
