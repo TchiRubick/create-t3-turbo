@@ -1,0 +1,45 @@
+{
+  ":name": "NextIQ",
+  ":description": "This is the first usage of CMS.",
+  "hero-section": {
+    "main-title": {
+      ":type": "line"
+    },
+    "short-title-description": {
+      ":type": "text"
+    },
+    "last-title": {
+      ":type": "line"
+    },
+    "description": {
+      ":type": "text"
+    },
+    "quotes": {
+      ":type": "line"
+    }
+  },
+  "price-section": {
+    "main-title": {
+      ":type": "line"
+    },
+    "title-description": {
+      ":type": "text"
+    },
+    "note": { ":type": "line" },
+    "price-list": {
+      ":items": {
+        "title": { ":type": "line" },
+        "price": { ":type": "line" },
+        "unity": { ":type": "line" },
+        "button": { ":type": "line" },
+        "special": {
+          ":type": "line",
+          ":description": "Has to be empty or assign the value 'special' to it"
+        },
+        "features": {
+          ":items": { ":type": "line" }
+        }
+      }
+    }
+  }
+}

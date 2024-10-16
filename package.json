@@ -10,6 +10,7 @@
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
     "daemon": "turbo daemon clean && turbo daemon start",
+    "cms:generate": "turbo -F @acme/cms generate:types",
     "db:push": "turbo -F @acme/db push",
     "db:pull": "turbo -F @acme/db introspect",
     "db:migrate": "turbo -F @acme/db migrate",

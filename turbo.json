@@ -47,6 +47,10 @@
       "cache": false,
       "interactive": true
     },
+    "generate:types": {
+      "cache": false,
+      "interactive": false
+    },
     "studio": {
       "cache": false,
       "persistent": true
