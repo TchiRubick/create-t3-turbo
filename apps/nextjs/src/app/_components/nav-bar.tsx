@@ -36,7 +36,7 @@ export const NavBar = async () => {
         </Link>
         <Link
           className="text-sm font-medium underline-offset-4 hover:underline"
-          href="#"
+          href="/contact"
         >
           Contact
         </Link>
