@@ -20,18 +20,20 @@ export const metadata: Metadata = {
       ? "https://turbo.t3.gg"
       : "http://localhost:3000",
   ),
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: "NextIQ",
+  description:
+    "NextIQ helps you build your website. We are a small team founded by an international and experienced software engineer from Madagascar.",
   openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
+    title: "NextIQ",
+    description:
+      "NextIQ helps you build your website. We are a small team founded by an international and experienced software engineer from Madagascar.",
+    // url: "https://create-t3-turbo.vercel.app",
+    siteName: "NextIQ",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
+    site: "@moonlightlykos",
+    creator: "@moonlightlykos",
   },
 };
 

@@ -66,7 +66,9 @@ export const CardsPrice = () => {
               </ul>
             </div>
             <div className="mt-6">
-              <Button className="w-full">Get Started</Button>
+              <Button className="w-full bg-slate-950 hover:bg-slate-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-500">
+                Get Started
+              </Button>
             </div>
           </div>
           <div className="flex flex-col justify-between rounded-lg border border-gray-800 bg-gray-900 p-6 shadow-lg">
@@ -105,7 +107,7 @@ export const CardsPrice = () => {
               </ul>
             </div>
             <div className="mt-6">
-              <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
+              <Button className="w-full bg-white text-gray-900 hover:bg-gray-500">
                 Get Started
               </Button>
             </div>
@@ -140,7 +142,9 @@ export const CardsPrice = () => {
               </ul>
             </div>
             <div className="mt-6">
-              <Button className="w-full">Get Started</Button>
+              <Button className="w-full bg-slate-950 hover:bg-slate-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-500">
+                Get Started
+              </Button>
             </div>
           </div>
         </div>

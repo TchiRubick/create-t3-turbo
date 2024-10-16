@@ -29,8 +29,8 @@ export const HeroSection = () => (
       <Image
         src="landing.svg"
         alt="logo"
-        className="h-96 w-96"
-        width={400}
+        className="h-[400px] w-[700px]"
+        width={700}
         height={400}
       />
     </div>
