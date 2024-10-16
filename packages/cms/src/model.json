@@ -39,7 +39,9 @@
           ":description": "Has to be empty or assign the value 'special' to it"
         },
         "features": {
-          ":items": { ":type": "line" }
+          ":items": {
+            "value": { ":type": "line" }
+          }
         }
       }
     }

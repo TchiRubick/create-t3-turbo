@@ -33,7 +33,11 @@ export interface PriceList {
   unity: string;
   special: string;
   button: string;
-  features: string[];
+  features: Feature[];
+}
+
+export interface Feature {
+  value: string;
 }
 
 // Converts JSON strings to/from your types
@@ -118,7 +122,7 @@ function transform(
   }
 
   function transformEnum(cases: string[], val: any): any {
-    if (cases.includes(val)) return val;
+    if (cases.indexOf(val) !== -1) return val;
     return invalidValue(
       cases.map((a) => {
         return l(a);
@@ -147,7 +151,7 @@ function transform(
   }
 
   function transformObject(
-    props: Record<string, any>,
+    props: { [k: string]: any },
     additional: any,
     val: any,
   ): any {
@@ -266,8 +270,9 @@ const typeMap: any = {
       { json: "unity", js: "unity", typ: "" },
       { json: "special", js: "special", typ: "" },
       { json: "button", js: "button", typ: "" },
-      { json: "features", js: "features", typ: a("") },
+      { json: "features", js: "features", typ: a(r("Feature")) },
     ],
     false,
   ),
+  Feature: o([{ json: "value", js: "value", typ: "" }], false),
 };

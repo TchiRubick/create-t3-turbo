@@ -48,9 +48,9 @@ export const CardsPrice = () => {
                 </div>
                 <ul className="mt-4 space-y-2">
                   {priceList.features.map((feature) => (
-                    <li className="flex items-center" key={feature}>
+                    <li className="flex items-center" key={feature.value}>
                       <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                      {feature}
+                      {feature.value}
                     </li>
                   ))}
                 </ul>
