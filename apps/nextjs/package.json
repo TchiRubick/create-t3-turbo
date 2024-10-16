@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@acme/api": "workspace:*",
+    "@acme/cms": "workspace:*",
     "@acme/db": "workspace:*",
     "@acme/lucia": "workspace:*",
     "@acme/ui": "workspace:*",

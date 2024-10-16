@@ -1,0 +1,63 @@
+{
+  "hero-section": {
+    "main-title": "NextIQ",
+    "short-title-description": "helps you build your",
+    "last-title": "website",
+    "description": "We are a small team founded by an international and experienced software engineer from Madagascar.",
+    "quotes": "\"NextIQ: Intelligent Web Solutions!\" - chatgpt"
+  },
+  "price-section": {
+    "main-title": "Simple, Transparent Pricing",
+    "title-description": "Choose the plan that's right for you.\nTo ensure that we can put in place and allocate the resources required to the infrastructure before the final delivery. You may pay 30% of the final price after the first demo.",
+    "note": "Local client from Madagascar are proposed to a lower and different price range.",
+    "price-list": [
+      {
+        "title": "Basics",
+        "price": "$400",
+        "unity": "year",
+        "special": "",
+        "button": "Get started",
+        "features": [
+          "Landing page",
+          "Contact page linked to Email or Whatsapp",
+          "simple page on demand",
+          "Free maintenance for a year",
+          "Free domaine name for a year (.com, .mg)",
+          "Limited Database capacity",
+          "1GB of media storage",
+          "CDN",
+          "SEO expert intervention once"
+        ]
+      },
+      {
+        "title": "In-demand",
+        "price": "~$600",
+        "unity": "year",
+        "special": "special",
+        "button": "Get started",
+        "features": [
+          "Everything in basics",
+          "In-demand features",
+          "Unlimited pages",
+          "Higher database capacity",
+          "Better server performance",
+          "More storage space"
+        ]
+      },
+      {
+        "title": "In-house",
+        "price": "~$10",
+        "unity": "hour / talent",
+        "special": "",
+        "button": "Get started",
+        "features": [
+          "Choose your talent(s)",
+          "Dedicated and exclusive developer(s) for you",
+          "Take control of everything",
+          "White labeled",
+          "Support"
+        ]
+      }
+    ]
+  }
+}
