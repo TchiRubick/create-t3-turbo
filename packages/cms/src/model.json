@@ -2,6 +2,7 @@
   ":name": "NextIQ",
   ":description": "This is the first usage of CMS.",
   "hero-section": {
+    ":name": "NextIQ hero section",
     "main-title": {
       ":type": "line"
     },
@@ -19,6 +20,7 @@
     }
   },
   "price-section": {
+    ":name": "NextIQ price section",
     "main-title": {
       ":type": "line"
     },
