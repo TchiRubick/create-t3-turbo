@@ -34,10 +34,6 @@ const SignupPage = () => (
                 name="username"
                 placeholder={signupFormSection.fields[0]?.placeholder}
                 required
-                aria-invalid={Boolean(
-                  signupFormSection.fields[0]?.errorMessage,
-                )}
-                aria-errormessage={signupFormSection.fields[0]?.errorMessage}
               />
             </div>
             <div className="grid gap-2">
@@ -68,9 +64,9 @@ const SignupPage = () => (
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
-            {signupFormSection.alreadyHaveAccountText}
+            {signupFormSection["already-have-account-text"]}
             <Link href="/auth" className="underline">
-              {signupFormSection.alreadyHaveAccountLinkText}
+              {signupFormSection["already-have-account-link-text"]}
             </Link>
           </div>
         </CardContent>

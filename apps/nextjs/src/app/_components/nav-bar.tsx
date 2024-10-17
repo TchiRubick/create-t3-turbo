@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Anchor } from "lucide-react";
+import { Anchor, User } from "lucide-react";
 
+import { Button } from "@acme/ui/button";
 import { ThemeToggle } from "@acme/ui/theme";
 
 import { api } from "~/trpc/server";
@@ -40,7 +42,28 @@ export const NavBar = async () => {
         >
           Contact
         </Link>
+        <Link href={"#"}>
+          <Button
+            variant="outline"
+            size="icon"
+            className="overflow-hidden rounded-full"
+          >
+            {!isLoggedIn ? (
+              <User className="h-6 w-6" />
+            ) : (
+              <Image
+                src="/placeholder-user.jpg"
+                width={36}
+                height={36}
+                alt="Avatar"
+                className="overflow-hidden rounded-full"
+              />
+            )}
+          </Button>
+        </Link>
+
         <ThemeToggle />
+
         {isLoggedIn && <SignoutButton />}
       </nav>
     </header>
