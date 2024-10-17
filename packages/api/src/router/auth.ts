@@ -17,6 +17,7 @@ export const authRouter = {
 
     return true;
   }),
+  user: protectedProcedure.query(({ ctx }) => ctx.session.user),
   signOut: protectedProcedure.mutation(async ({ ctx }) => {
     await lucia.invalidateSession(ctx.token ?? "");
 
