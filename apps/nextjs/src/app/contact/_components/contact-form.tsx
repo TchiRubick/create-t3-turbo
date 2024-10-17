@@ -2,11 +2,33 @@
 
 import { useForm } from "react-hook-form";
 
+import { getSection } from "@acme/cms";
+import { Button } from "@acme/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@acme/ui/card";
+import { Input } from "@acme/ui/input";
+import { Label } from "@acme/ui/label";
+import { Textarea } from "@acme/ui/textarea";
+
 type FormData = {
   fullName: string;
   email: string;
   message: string;
   phone: string;
+};
+
+const contactFormSection = getSection("contact-form");
+const requiredMessage = {
+  fullName: contactFormSection.fields[0]?.errorMessage,
+  phone: contactFormSection.fields[1]?.errorMessage,
+  email: contactFormSection.fields[2]?.errorMessage,
+  message: contactFormSection.fields[3]?.errorMessage,
 };
 
 export const ContactForm = () => {
@@ -19,73 +41,89 @@ export const ContactForm = () => {
   const onSubmit = (data: FormData) => {
     console.log(data);
   };
+
   return (
-    <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex-1">
-        <label className="mb-2 block text-sm text-gray-600 dark:text-gray-200">
-          Full Name
-        </label>
-        <input
-          type="text"
-          placeholder="Jane Doe"
-          {...register("fullName", { required: true })}
-          className="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-background dark:text-gray-300 dark:focus:border-blue-300"
-        />
-        {errors.fullName && (
-          <span className="text-red-500">Full Name is required</span>
-        )}
-      </div>
-
-      <div className="mt-6 flex-1">
-        <label className="mb-2 block text-sm text-gray-600 dark:text-gray-200">
-          Phone number
-        </label>
-        <input
-          type="tel"
-          placeholder="+123 456 789"
-          {...register("phone", { required: true })}
-          className="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-background dark:text-gray-300 dark:focus:border-blue-300"
-        />
-        {errors.phone && (
-          <span className="text-red-500">Number phone is required</span>
-        )}
-      </div>
-
-      <div className="mt-6 flex-1">
-        <label className="mb-2 block text-sm text-gray-600 dark:text-gray-200">
-          Email address
-        </label>
-        <input
-          type="email"
-          placeholder="janedoe@example.com"
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: "Invalid email address",
-            },
-          })}
-          className="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-background dark:text-gray-300 dark:focus:border-blue-300"
-        />
-      </div>
-
-      <div className="mt-6 w-full">
-        <label className="mb-2 block text-sm text-gray-600 dark:text-gray-200">
-          Message
-        </label>
-        <textarea
-          {...register("message", { required: true })}
-          className="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-background dark:text-gray-300 dark:focus:border-blue-300 md:h-48"
-          placeholder="Message"
-        ></textarea>
-        {errors.message && (
-          <span className="text-red-500">Message is required</span>
-        )}
-      </div>
-
-      <button className="mt-6 w-full transform rounded-md bg-blue-600 px-6 py-3 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
-        get in touch
-      </button>
-    </form>
+    <div className="mt-8 lg:mx-6 lg:w-1/2">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-2xl">
+              {contactFormSection.title}
+            </CardTitle>
+            <CardDescription>{contactFormSection.description}</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="fullname">
+                {contactFormSection.fields[0]?.label}
+              </Label>
+              <Input
+                type="text"
+                placeholder={contactFormSection.fields[0]?.placeholder}
+                {...register("fullName", {
+                  required: requiredMessage.fullName,
+                })}
+                className="min-h-12"
+              />
+              {errors.fullName && (
+                <p className="text-sm text-red-500">
+                  {errors.fullName.message}
+                </p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="phone">
+                {contactFormSection.fields[1]?.label}
+              </Label>
+              <Input
+                type="tel"
+                placeholder={contactFormSection.fields[1]?.placeholder}
+                {...register("phone", {
+                  required: requiredMessage.phone,
+                })}
+                className="min-h-12"
+              />
+              {errors.phone && (
+                <p className="text-sm text-red-500">{errors.phone.message}</p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="email">
+                {contactFormSection.fields[2]?.label}
+              </Label>
+              <Input
+                type="email"
+                placeholder={contactFormSection.fields[2]?.placeholder}
+                {...register("email", {
+                  required: requiredMessage.email,
+                })}
+                className="min-h-12"
+              />
+              {errors.email && (
+                <p className="text-sm text-red-500">{errors.email.message}</p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="message">
+                {contactFormSection.fields[3]?.label}
+              </Label>
+              <Textarea
+                {...register("message", {
+                  required: requiredMessage.message,
+                })}
+                placeholder={contactFormSection.fields[3]?.label}
+                className="min-h-32"
+              />
+              {errors.message && (
+                <p className="text-sm text-red-500">{errors.message.message}</p>
+              )}
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button className="w-full">{contactFormSection.button}</Button>
+          </CardFooter>
+        </Card>
+      </form>
+    </div>
   );
 };
