@@ -141,7 +141,7 @@
     "already-have-account-text": "Already have an account?",
     "already-have-account-link-text": "Sign in"
   },
-  "contact-section": {
+  "contact-page": {
     "title": "Contact us now.",
     "description": "Have a question, comment, or concern? We're here to listen and help. Get in touch with us today and let's start a conversation.",
     "button": "Get in touch",
@@ -152,27 +152,25 @@
     "title": "Contact us",
     "description": "Ask us everything and we would love to hear from you",
     "button": "get in touch",
-    "fields": [
-      {
-        "label": "Full Name",
-        "placeholder": "Jane Doe",
-        "error-message": "Full name is required"
-      },
-      {
-        "label": "Phone number",
-        "placeholder": "+123 456 789",
-        "error-message": "Phone number is required"
-      },
-      {
-        "label": "Email address",
-        "placeholder": "janedoe@example.com",
-        "error-message": "Email adress is required"
-      },
-      {
-        "label": "Message",
-        "placeholder": "Message",
-        "error-message": "Message is required"
-      }
-    ]
+    "input-full-name": {
+      "label": "Full name",
+      "placeholder": "Enter your full name",
+      "error-message": "Full name is required"
+    },
+    "input-email": {
+      "label": "Email",
+      "placeholder": "Enter your email address",
+      "error-message": "Invalid format email"
+    },
+    "input-phone": {
+      "label": "Phone number",
+      "placeholder": "+123 456 789",
+      "error-message": "Phone number is required"
+    },
+    "input-message": {
+      "label": "Message",
+      "placeholder": "Message",
+      "error-message": "Message is required"
+    }
   }
 }

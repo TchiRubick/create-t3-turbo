@@ -3,7 +3,7 @@ import { getSection } from "@acme/cms";
 import { ContactForm } from "./_components/contact-form";
 import { IconSocials } from "./_components/icon-socials";
 
-const contactSection = getSection("contact-section");
+const contactSection = getSection("contact-page");
 
 const ContactPage = () => {
   return (

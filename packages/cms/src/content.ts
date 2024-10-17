@@ -8,28 +8,31 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface Content {
-    "hero-section":    HeroSection;
-    "price-section":   PriceSection;
-    "signin-form":     SigninForm;
-    "signup-form":     SignupForm;
-    "contact-section": ContactSection;
-    "contact-form":    ContactForm;
+    "hero-section":  HeroSection;
+    "price-section": PriceSection;
+    "signin-form":   SigninForm;
+    "signup-form":   SignupForm;
+    "contact-page":  ContactPage;
+    "contact-form":  ContactForm;
 }
 
 export interface ContactForm {
-    title:       string;
-    description: string;
-    button:      string;
-    fields:      PasswordInput[];
+    title:             string;
+    description:       string;
+    button:            string;
+    "input-full-name": InputEmail;
+    "input-email":     InputEmail;
+    "input-phone":     InputEmail;
+    "input-message":   InputEmail;
 }
 
-export interface PasswordInput {
+export interface InputEmail {
     label:           string;
     placeholder:     string;
     "error-message": string;
 }
 
-export interface ContactSection {
+export interface ContactPage {
     title:               string;
     description:         string;
     button:              string;
@@ -71,14 +74,14 @@ export interface SigninForm {
     button:                 string;
     "no-account-text":      string;
     "no-account-link-text": string;
-    "username-input":       PasswordInput;
-    "password-input":       PasswordInput;
+    "username-input":       InputEmail;
+    "password-input":       InputEmail;
 }
 
 export interface SignupForm {
     title:                            string;
     description:                      string;
-    fields:                           PasswordInput[];
+    fields:                           InputEmail[];
     button:                           string;
     "already-have-account-text":      string;
     "already-have-account-link-text": string;
@@ -254,21 +257,24 @@ const typeMap: any = {
         { json: "price-section", js: "price-section", typ: r("PriceSection") },
         { json: "signin-form", js: "signin-form", typ: r("SigninForm") },
         { json: "signup-form", js: "signup-form", typ: r("SignupForm") },
-        { json: "contact-section", js: "contact-section", typ: r("ContactSection") },
+        { json: "contact-page", js: "contact-page", typ: r("ContactPage") },
         { json: "contact-form", js: "contact-form", typ: r("ContactForm") },
     ], false),
     "ContactForm": o([
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
         { json: "button", js: "button", typ: "" },
-        { json: "fields", js: "fields", typ: a(r("PasswordInput")) },
+        { json: "input-full-name", js: "input-full-name", typ: r("InputEmail") },
+        { json: "input-email", js: "input-email", typ: r("InputEmail") },
+        { json: "input-phone", js: "input-phone", typ: r("InputEmail") },
+        { json: "input-message", js: "input-message", typ: r("InputEmail") },
     ], false),
-    "PasswordInput": o([
+    "InputEmail": o([
         { json: "label", js: "label", typ: "" },
         { json: "placeholder", js: "placeholder", typ: "" },
         { json: "error-message", js: "error-message", typ: "" },
     ], false),
-    "ContactSection": o([
+    "ContactPage": o([
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
         { json: "button", js: "button", typ: "" },
@@ -305,13 +311,13 @@ const typeMap: any = {
         { json: "button", js: "button", typ: "" },
         { json: "no-account-text", js: "no-account-text", typ: "" },
         { json: "no-account-link-text", js: "no-account-link-text", typ: "" },
-        { json: "username-input", js: "username-input", typ: r("PasswordInput") },
-        { json: "password-input", js: "password-input", typ: r("PasswordInput") },
+        { json: "username-input", js: "username-input", typ: r("InputEmail") },
+        { json: "password-input", js: "password-input", typ: r("InputEmail") },
     ], false),
     "SignupForm": o([
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
-        { json: "fields", js: "fields", typ: a(r("PasswordInput")) },
+        { json: "fields", js: "fields", typ: a(r("InputEmail")) },
         { json: "button", js: "button", typ: "" },
         { json: "already-have-account-text", js: "already-have-account-text", typ: "" },
         { json: "already-have-account-link-text", js: "already-have-account-link-text", typ: "" },

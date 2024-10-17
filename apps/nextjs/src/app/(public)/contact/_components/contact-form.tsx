@@ -1,6 +1,8 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { getSection } from "@acme/cms";
 import { Button } from "@acme/ui/button";
@@ -16,6 +18,7 @@ import { Input } from "@acme/ui/input";
 import { Label } from "@acme/ui/label";
 import { Textarea } from "@acme/ui/textarea";
 
+const contactFormSection = getSection("contact-form");
 type FormData = {
   fullName: string;
   email: string;
@@ -23,21 +26,28 @@ type FormData = {
   phone: string;
 };
 
-const contactFormSection = getSection("contact-form");
-
-const requiredMessage = {
-  fullName: contactFormSection.fields[0]?.["error-message"],
-  phone: contactFormSection.fields[1]?.["error-message"],
-  email: contactFormSection.fields[2]?.["error-message"],
-  message: contactFormSection.fields[3]?.["error-message"],
-};
+const zFormSchema = z.object({
+  fullName: z
+    .string()
+    .min(5, contactFormSection["input-full-name"]?.["error-message"]),
+  email: z.string().email(contactFormSection["input-email"]?.["error-message"]),
+  message: z
+    .string()
+    .min(10, contactFormSection["input-message"]?.["error-message"]),
+  phone: z
+    .string()
+    .min(10, contactFormSection["input-phone"]?.["error-message"]),
+});
 
 export const ContactForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    resolver: zodResolver(zFormSchema),
+    mode: "onChange",
+  });
 
   const onSubmit = (data: FormData) => {
     console.log(data);
@@ -56,14 +66,12 @@ export const ContactForm = () => {
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="fullname">
-                {contactFormSection.fields[0]?.label}
+                {contactFormSection["input-full-name"].label}
               </Label>
               <Input
                 type="text"
-                placeholder={contactFormSection.fields[0]?.placeholder}
-                {...register("fullName", {
-                  required: contactFormSection.fields[0]?.["error-message"],
-                })}
+                placeholder={contactFormSection["input-full-name"].placeholder}
+                {...register("fullName")}
                 className="min-h-12"
               />
               {errors.fullName && (
@@ -74,13 +82,14 @@ export const ContactForm = () => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="phone">
-                {contactFormSection.fields[1]?.label}
+                {contactFormSection["input-phone"]?.label}
               </Label>
               <Input
                 type="tel"
-                placeholder={contactFormSection.fields[1]?.placeholder}
+                placeholder={contactFormSection["input-phone"]?.placeholder}
                 {...register("phone", {
-                  required: requiredMessage.phone,
+                  required:
+                    contactFormSection["input-phone"]?.["error-message"],
                 })}
                 className="min-h-12"
               />
@@ -90,14 +99,12 @@ export const ContactForm = () => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email">
-                {contactFormSection.fields[2]?.label}
+                {contactFormSection["input-email"].label}
               </Label>
               <Input
                 type="email"
-                placeholder={contactFormSection.fields[2]?.placeholder}
-                {...register("email", {
-                  required: requiredMessage.email,
-                })}
+                placeholder={contactFormSection["input-email"].placeholder}
+                {...register("email")}
                 className="min-h-12"
               />
               {errors.email && (
@@ -106,13 +113,11 @@ export const ContactForm = () => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="message">
-                {contactFormSection.fields[3]?.label}
+                {contactFormSection["input-message"].label}
               </Label>
               <Textarea
-                {...register("message", {
-                  required: requiredMessage.message,
-                })}
-                placeholder={contactFormSection.fields[3]?.label}
+                {...register("message")}
+                placeholder={contactFormSection["input-message"].label}
                 className="min-h-32"
               />
               {errors.message && (
