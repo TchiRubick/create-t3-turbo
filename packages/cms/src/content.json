@@ -100,24 +100,22 @@
       }
     ]
   },
-  "login-form": {
+  "signin-form": {
     "title": "Login to your account",
     "description": "Enter your email and password to access your account.",
-    "fields": [
-      {
-        "label": "Email or User name",
-        "placeholder": "m@example.com",
-        "errorMessage": "Invalid Email or User name"
-      },
-      {
-        "label": "Password",
-        "placeholder": "••••••••",
-        "errorMessage": "Invalid password"
-      }
-    ],
     "button": "Sign in",
-    "noAccountText": "Don't have an account?",
-    "noAccountLinkText": "Sign up"
+    "no-account-text": "Don't have an account?",
+    "no-account-link-text": "Sign up",
+    "username-input": {
+      "label": "Email or User name",
+      "placeholder": "m@example.com",
+      "error-message": "Invalid Email or User name"
+    },
+    "password-input": {
+      "label": "Password",
+      "placeholder": "••••••••",
+      "error-message": "Invalid password"
+    }
   },
   "signup-form": {
     "title": "Sign Up",
@@ -126,28 +124,28 @@
       {
         "label": "Username",
         "placeholder": "Enter your full name",
-        "errorMessage": "User name is required"
+        "error-message": "User name is required"
       },
       {
         "label": "Email",
         "placeholder": "Enter your email address",
-        "errorMessage": "Email is required"
+        "error-message": "Email is required"
       },
       {
         "label": "Password",
         "placeholder": "••••••••",
-        "errorMessage": "Password is required"
+        "error-message": "Password is required"
       }
     ],
     "button": "Create account",
-    "alreadyHaveAccountText": "Already have an account?",
-    "alreadyHaveAccountLinkText": "Sign in"
+    "already-have-account-text": "Already have an account?",
+    "already-have-account-link-text": "Sign in"
   },
   "contact-section": {
     "title": "Contact us now.",
     "description": "Have a question, comment, or concern? We're here to listen and help. Get in touch with us today and let's start a conversation.",
     "button": "Get in touch",
-    "socialMediaText": "Follow us on social media",
+    "social-media-text": "Follow us on social media",
     "background": "https://images.unsplash.com/photo-1709884735626-63e92727d8b6"
   },
   "contact-form": {
@@ -158,22 +156,22 @@
       {
         "label": "Full Name",
         "placeholder": "Jane Doe",
-        "errorMessage": "Full name is required"
+        "error-message": "Full name is required"
       },
       {
         "label": "Phone number",
         "placeholder": "+123 456 789",
-        "errorMessage": "Phone number is required"
+        "error-message": "Phone number is required"
       },
       {
         "label": "Email address",
         "placeholder": "janedoe@example.com",
-        "errorMessage": "Email adress is required"
+        "error-message": "Email adress is required"
       },
       {
         "label": "Message",
         "placeholder": "Message",
-        "errorMessage": "Message is required"
+        "error-message": "Message is required"
       }
     ]
   }

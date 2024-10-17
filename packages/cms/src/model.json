@@ -45,5 +45,57 @@
         }
       }
     }
+  },
+  "signin-form": {
+    "title": { ":type": "line" },
+    "description": { ":type": "text" },
+    "button": { ":type": "line" },
+    "no-account-text": { ":type": "line" },
+    "no-account-link-text": { ":type": "line" },
+    "username-input": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
+    },
+    "password-input": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
+    }
+  },
+  "signup-form": {
+    "title": { ":type": "line" },
+    "description": { ":type": "text" },
+    "fields": {
+      ":items": {
+        "label": { ":type": "line" },
+        "placeholder": { ":type": "line" },
+        "error-message": { ":type": "line" }
+      }
+    },
+    "button": { ":type": "line" },
+    "already-have-account-text": { ":type": "line" },
+    "already-have-account-link-text": { ":type": "line" }
+  },
+  "contact-section": {
+    "title": { ":type": "line" },
+    "description": { ":type": "line" },
+    "button": { ":type": "line" },
+    "social-media-text": { ":type": "line" },
+    "background": { ":type": "line" }
+  },
+  "contact-form": {
+    "title": { ":type": "line" },
+    "description": { ":type": "text" },
+    "fields": {
+      ":items": {
+        "label": { ":type": "line" },
+        "placeholder": { ":type": "line" },
+        "error-message": { ":type": "line" }
+      }
+    },
+    "button": { ":type": "line" },
+    "already-have-account-text": { ":type": "line" },
+    "already-have-account-link-text": { ":type": "line" }
   }
 }

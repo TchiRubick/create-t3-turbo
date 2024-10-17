@@ -3,8 +3,9 @@ import { getSection } from "@acme/cms";
 import { ContactForm } from "./_components/contact-form";
 import { IconSocials } from "./_components/icon-socials";
 
+const contactSection = getSection("contact-section");
+
 const ContactPage = () => {
-  const contactSection = getSection("contact-section");
   return (
     <section
       className="min-h-screen bg-cover"
@@ -28,7 +29,7 @@ const ContactPage = () => {
 
               <div className="mt-6 md:mt-8">
                 <h3 className="text-gray-300">
-                  {contactSection.socialMediaText}
+                  {contactSection["social-media-text"]}
                 </h3>
 
                 <IconSocials />

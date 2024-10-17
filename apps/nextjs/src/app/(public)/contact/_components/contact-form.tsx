@@ -24,11 +24,12 @@ type FormData = {
 };
 
 const contactFormSection = getSection("contact-form");
+
 const requiredMessage = {
-  fullName: contactFormSection.fields[0]?.errorMessage,
-  phone: contactFormSection.fields[1]?.errorMessage,
-  email: contactFormSection.fields[2]?.errorMessage,
-  message: contactFormSection.fields[3]?.errorMessage,
+  fullName: contactFormSection.fields[0]?.["error-message"],
+  phone: contactFormSection.fields[1]?.["error-message"],
+  email: contactFormSection.fields[2]?.["error-message"],
+  message: contactFormSection.fields[3]?.["error-message"],
 };
 
 export const ContactForm = () => {
@@ -61,7 +62,7 @@ export const ContactForm = () => {
                 type="text"
                 placeholder={contactFormSection.fields[0]?.placeholder}
                 {...register("fullName", {
-                  required: requiredMessage.fullName,
+                  required: contactFormSection.fields[0]?.["error-message"],
                 })}
                 className="min-h-12"
               />

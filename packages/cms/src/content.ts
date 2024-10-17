@@ -10,7 +10,7 @@
 export interface Content {
     "hero-section":    HeroSection;
     "price-section":   PriceSection;
-    "login-form":      LoginForm;
+    "signin-form":     SigninForm;
     "signup-form":     SignupForm;
     "contact-section": ContactSection;
     "contact-form":    ContactForm;
@@ -20,21 +20,21 @@ export interface ContactForm {
     title:       string;
     description: string;
     button:      string;
-    fields:      Field[];
+    fields:      PasswordInput[];
 }
 
-export interface Field {
-    label:        string;
-    placeholder:  string;
-    errorMessage: string;
+export interface PasswordInput {
+    label:           string;
+    placeholder:     string;
+    "error-message": string;
 }
 
 export interface ContactSection {
-    title:           string;
-    description:     string;
-    button:          string;
-    socialMediaText: string;
-    background:      string;
+    title:               string;
+    description:         string;
+    button:              string;
+    "social-media-text": string;
+    background:          string;
 }
 
 export interface HeroSection {
@@ -43,15 +43,6 @@ export interface HeroSection {
     "last-title":              string;
     description:               string;
     quotes:                    string;
-}
-
-export interface LoginForm {
-    title:             string;
-    description:       string;
-    fields:            Field[];
-    button:            string;
-    noAccountText:     string;
-    noAccountLinkText: string;
 }
 
 export interface PriceSection {
@@ -74,13 +65,23 @@ export interface Feature {
     value: string;
 }
 
+export interface SigninForm {
+    title:                  string;
+    description:            string;
+    button:                 string;
+    "no-account-text":      string;
+    "no-account-link-text": string;
+    "username-input":       PasswordInput;
+    "password-input":       PasswordInput;
+}
+
 export interface SignupForm {
-    title:                      string;
-    description:                string;
-    fields:                     Field[];
-    button:                     string;
-    alreadyHaveAccountText:     string;
-    alreadyHaveAccountLinkText: string;
+    title:                            string;
+    description:                      string;
+    fields:                           PasswordInput[];
+    button:                           string;
+    "already-have-account-text":      string;
+    "already-have-account-link-text": string;
 }
 
 // Converts JSON strings to/from your types
@@ -251,7 +252,7 @@ const typeMap: any = {
     "Content": o([
         { json: "hero-section", js: "hero-section", typ: r("HeroSection") },
         { json: "price-section", js: "price-section", typ: r("PriceSection") },
-        { json: "login-form", js: "login-form", typ: r("LoginForm") },
+        { json: "signin-form", js: "signin-form", typ: r("SigninForm") },
         { json: "signup-form", js: "signup-form", typ: r("SignupForm") },
         { json: "contact-section", js: "contact-section", typ: r("ContactSection") },
         { json: "contact-form", js: "contact-form", typ: r("ContactForm") },
@@ -260,18 +261,18 @@ const typeMap: any = {
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
         { json: "button", js: "button", typ: "" },
-        { json: "fields", js: "fields", typ: a(r("Field")) },
+        { json: "fields", js: "fields", typ: a(r("PasswordInput")) },
     ], false),
-    "Field": o([
+    "PasswordInput": o([
         { json: "label", js: "label", typ: "" },
         { json: "placeholder", js: "placeholder", typ: "" },
-        { json: "errorMessage", js: "errorMessage", typ: "" },
+        { json: "error-message", js: "error-message", typ: "" },
     ], false),
     "ContactSection": o([
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
         { json: "button", js: "button", typ: "" },
-        { json: "socialMediaText", js: "socialMediaText", typ: "" },
+        { json: "social-media-text", js: "social-media-text", typ: "" },
         { json: "background", js: "background", typ: "" },
     ], false),
     "HeroSection": o([
@@ -280,14 +281,6 @@ const typeMap: any = {
         { json: "last-title", js: "last-title", typ: "" },
         { json: "description", js: "description", typ: "" },
         { json: "quotes", js: "quotes", typ: "" },
-    ], false),
-    "LoginForm": o([
-        { json: "title", js: "title", typ: "" },
-        { json: "description", js: "description", typ: "" },
-        { json: "fields", js: "fields", typ: a(r("Field")) },
-        { json: "button", js: "button", typ: "" },
-        { json: "noAccountText", js: "noAccountText", typ: "" },
-        { json: "noAccountLinkText", js: "noAccountLinkText", typ: "" },
     ], false),
     "PriceSection": o([
         { json: "main-title", js: "main-title", typ: "" },
@@ -306,12 +299,21 @@ const typeMap: any = {
     "Feature": o([
         { json: "value", js: "value", typ: "" },
     ], false),
+    "SigninForm": o([
+        { json: "title", js: "title", typ: "" },
+        { json: "description", js: "description", typ: "" },
+        { json: "button", js: "button", typ: "" },
+        { json: "no-account-text", js: "no-account-text", typ: "" },
+        { json: "no-account-link-text", js: "no-account-link-text", typ: "" },
+        { json: "username-input", js: "username-input", typ: r("PasswordInput") },
+        { json: "password-input", js: "password-input", typ: r("PasswordInput") },
+    ], false),
     "SignupForm": o([
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
-        { json: "fields", js: "fields", typ: a(r("Field")) },
+        { json: "fields", js: "fields", typ: a(r("PasswordInput")) },
         { json: "button", js: "button", typ: "" },
-        { json: "alreadyHaveAccountText", js: "alreadyHaveAccountText", typ: "" },
-        { json: "alreadyHaveAccountLinkText", js: "alreadyHaveAccountLinkText", typ: "" },
+        { json: "already-have-account-text", js: "already-have-account-text", typ: "" },
+        { json: "already-have-account-link-text", js: "already-have-account-link-text", typ: "" },
     ], false),
 };

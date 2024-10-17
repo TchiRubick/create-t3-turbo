@@ -14,7 +14,7 @@ import {
 import { Input } from "@acme/ui/input";
 import { Label } from "@acme/ui/label";
 
-const loginFormSection = getSection("login-form");
+const loginFormSection = getSection("signin-form");
 
 const SigninPage = async () => {
   return (
@@ -27,24 +27,26 @@ const SigninPage = async () => {
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">{loginFormSection.fields[0]?.label}</Label>
+              <Label htmlFor="email">
+                {loginFormSection["username-input"].label}
+              </Label>
               <Input
                 name="email"
                 id="email"
                 type="email"
-                placeholder={loginFormSection.fields[0]?.placeholder}
+                placeholder={loginFormSection["username-input"].placeholder}
                 required
               />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">
-                {loginFormSection.fields[1]?.label}
+                {loginFormSection["password-input"].label}
               </Label>
               <Input
                 name="password"
                 id="password"
                 type="password"
-                placeholder={loginFormSection.fields[1]?.placeholder}
+                placeholder={loginFormSection["password-input"].placeholder}
                 required
               />
             </div>
@@ -52,9 +54,9 @@ const SigninPage = async () => {
           <CardFooter className="flex flex-col gap-2">
             <Button className="w-full">{loginFormSection.button}</Button>
             <div className="mt-4 text-center text-sm">
-              {loginFormSection.noAccountText}
+              {loginFormSection["no-account-text"]}
               <Link href="/auth" className="underline">
-                {loginFormSection.noAccountLinkText}
+                {loginFormSection["no-account-link-text"]}
               </Link>
             </div>
           </CardFooter>
