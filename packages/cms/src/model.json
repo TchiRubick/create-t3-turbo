@@ -81,12 +81,11 @@
     "already-have-account-text": { ":type": "line" },
     "already-have-account-link-text": { ":type": "line" }
   },
-  "contact-section": {
+  "contact-page": {
     "title": { ":type": "line" },
     "description": { ":type": "line" },
     "button": { ":type": "line" },
-    "social-media-text": { ":type": "line" },
-    "background": { ":type": "line" }
+    "social-media-text": { ":type": "line" }
   },
   "contact-form": {
     "title": { ":type": "line" },

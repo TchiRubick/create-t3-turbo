@@ -10,7 +10,8 @@ const ContactPage = () => {
     <section
       className="min-h-screen bg-cover"
       style={{
-        backgroundImage: `url(${contactSection.background})`,
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1709884735626-63e92727d8b6)",
       }}
     >
       <div className="flex min-h-screen flex-col bg-black/60">
