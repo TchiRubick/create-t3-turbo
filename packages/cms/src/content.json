@@ -39,7 +39,7 @@
             "value": "Domain name (.com, .mg)"
           },
           {
-            "value": "Allow access to the source code in our GitHub repository as viewer if needed"
+            "value": "GitHub repository access as viewer if needed"
           },
           {
             "value": "CMS access if needed"
