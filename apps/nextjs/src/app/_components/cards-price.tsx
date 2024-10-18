@@ -7,16 +7,16 @@ import { Button } from "@acme/ui/button";
 export const CardsPrice = () => {
   const section = getSection("price-section");
 
-  const cardContainerClassName = (value: string) =>
+  const cardContainerClassName = (index: number) =>
     cn("flex flex-col justify-between rounded-lg border p-6 shadow-lg", {
       "flex flex-col justify-between rounded-lg border border-gray-800 bg-gray-900 p-6 shadow-lg":
-        value === "special",
+        index === 1,
     });
 
-  const buttonClassName = (value: string) =>
+  const buttonClassName = (index: number) =>
     cn("w-full bg-white text-gray-900 hover:bg-gray-500", {
       "w-full bg-slate-950 hover:bg-slate-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-500":
-        value !== "special",
+        index === 1,
     });
 
   return (
@@ -33,9 +33,9 @@ export const CardsPrice = () => {
           </div>
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-3 lg:gap-12">
-          {section["price-list"].map((priceList) => (
+          {section["price-list"].map((priceList, index) => (
             <div
-              className={cardContainerClassName(priceList.special)}
+              className={cardContainerClassName(index)}
               key={priceList.title}
             >
               <div>
@@ -56,7 +56,7 @@ export const CardsPrice = () => {
                 </ul>
               </div>
               <div className="mt-6">
-                <Button className={buttonClassName(priceList.special)}>
+                <Button className={buttonClassName(index)}>
                   {priceList.button}
                 </Button>
               </div>

@@ -16,7 +16,7 @@ import { Label } from "@acme/ui/label";
 
 const loginFormSection = getSection("signin-form");
 
-const SigninPage = async () => {
+const SigninPage = () => {
   return (
     <div className="flex min-h-screen flex-col justify-center">
       <form action={signin} className="mx-auto max-w-sm">
