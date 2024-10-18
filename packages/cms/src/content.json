@@ -1,7 +1,7 @@
 {
   "hero-section": {
     "main-title": "NextIQ",
-    "short-title-description": "helps you build your",
+    "short-title-description": "for $190, get a",
     "last-title": "website",
     "description": "We are a small team founded by an international and experienced software engineer from Madagascar.",
     "quotes": "\"NextIQ: Intelligent Web Solutions!\" - chatgpt"
@@ -107,9 +107,9 @@
     "no-account-text": "Don't have an account?",
     "no-account-link-text": "Sign up",
     "username-input": {
-      "label": "Email or User name",
+      "label": "Email or Username",
       "placeholder": "m@example.com",
-      "error-message": "Invalid Email or User name"
+      "error-message": "Invalid Email or Username"
     },
     "password-input": {
       "label": "Password",
@@ -122,8 +122,8 @@
     "description": "Enter your information to create an account",
     "username-input": {
       "label": "Username",
-      "placeholder": "Enter your full name",
-      "error-message": "User name is required"
+      "placeholder": "Enter your username",
+      "error-message": "Username is required"
     },
     "email-input": {
       "label": "Email",
