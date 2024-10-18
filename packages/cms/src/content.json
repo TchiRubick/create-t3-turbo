@@ -15,7 +15,6 @@
         "title": "Basics",
         "price": "$400",
         "unity": "year",
-        "special": "",
         "button": "Get started",
         "features": [
           {
@@ -51,7 +50,6 @@
         "title": "In-demand",
         "price": "~$600",
         "unity": "year",
-        "special": "special",
         "button": "Get started",
         "features": [
           {
@@ -78,7 +76,6 @@
         "title": "In-house",
         "price": "~$10",
         "unity": "hour / talent",
-        "special": "",
         "button": "Get started",
         "features": [
           {
@@ -120,23 +117,21 @@
   "signup-form": {
     "title": "Sign Up",
     "description": "Enter your information to create an account",
-    "fields": [
-      {
-        "label": "Username",
-        "placeholder": "Enter your full name",
-        "error-message": "User name is required"
-      },
-      {
-        "label": "Email",
-        "placeholder": "Enter your email address",
-        "error-message": "Email is required"
-      },
-      {
-        "label": "Password",
-        "placeholder": "••••••••",
-        "error-message": "Password is required"
-      }
-    ],
+    "username-input": {
+      "label": "Username",
+      "placeholder": "Enter your full name",
+      "error-message": "User name is required"
+    },
+    "email-input": {
+      "label": "Email",
+      "placeholder": "Enter your email address",
+      "error-message": "Email is required"
+    },
+    "password-input": {
+      "label": "Password",
+      "placeholder": "••••••••",
+      "error-message": "Password is required"
+    },
     "button": "Create account",
     "already-have-account-text": "Already have an account?",
     "already-have-account-link-text": "Sign in"

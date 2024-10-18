@@ -27,17 +27,13 @@
     "title-description": {
       ":type": "text"
     },
-    "note": { ":type": "line" },
+    "note": { ":type": "text" },
     "price-list": {
       ":items": {
         "title": { ":type": "line" },
         "price": { ":type": "line" },
         "unity": { ":type": "line" },
         "button": { ":type": "line" },
-        "special": {
-          ":type": "line",
-          ":description": "Has to be empty or assign the value 'special' to it"
-        },
         "features": {
           ":items": {
             "value": { ":type": "line" }
@@ -66,12 +62,20 @@
   "signup-form": {
     "title": { ":type": "line" },
     "description": { ":type": "text" },
-    "fields": {
-      ":items": {
-        "label": { ":type": "line" },
-        "placeholder": { ":type": "line" },
-        "error-message": { ":type": "line" }
-      }
+    "username-input": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
+    },
+    "email-input": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
+    },
+    "password-input": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
     },
     "button": { ":type": "line" },
     "already-have-account-text": { ":type": "line" },
@@ -87,12 +91,25 @@
   "contact-form": {
     "title": { ":type": "line" },
     "description": { ":type": "text" },
-    "fields": {
-      ":items": {
-        "label": { ":type": "line" },
-        "placeholder": { ":type": "line" },
-        "error-message": { ":type": "line" }
-      }
+    "input-full-name": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
+    },
+    "input-email": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
+    },
+    "input-phone": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
+    },
+    "input-message": {
+      "label": { ":type": "line" },
+      "placeholder": { ":type": "line" },
+      "error-message": { ":type": "line" }
     },
     "button": { ":type": "line" },
     "already-have-account-text": { ":type": "line" },

@@ -27,36 +27,36 @@ const SignupPage = () => (
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="username">
-                {signupFormSection.fields[0]?.label}
+                {signupFormSection["username-input"].label}
               </Label>
               <Input
                 id="username"
                 name="username"
-                placeholder={signupFormSection.fields[0]?.placeholder}
+                placeholder={signupFormSection["username-input"].placeholder}
                 required
               />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email">
-                {signupFormSection.fields[1]?.label}
+                {signupFormSection["email-input"].label}
               </Label>
               <Input
                 id="email"
                 type="email"
                 name="email"
-                placeholder={signupFormSection.fields[1]?.placeholder}
+                placeholder={signupFormSection["email-input"].placeholder}
                 required
               />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">
-                {signupFormSection.fields[2]?.label}
+                {signupFormSection["password-input"].label}
               </Label>
               <Input
                 id="password"
                 name="password"
                 type="password"
-                placeholder={signupFormSection.fields[2]?.placeholder}
+                placeholder={signupFormSection["password-input"].placeholder}
               />
             </div>
             <Button type="submit" className="w-full">

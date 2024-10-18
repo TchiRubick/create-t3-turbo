@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserCircleIcon } from "lucide-react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
-import { UpdateUser, zUpdateUser } from "@acme/db";
+import type { UpdateUser } from "@acme/db";
+import { zUpdateUser } from "@acme/db";
 import { Button } from "@acme/ui/button";
 import {
   Card,
@@ -28,7 +30,7 @@ export const EditProfileForm = () => {
 
   const onSubmit = async (data: UpdateUser) => {
     await mutateAsync(data);
-    refetch();
+    await refetch();
   };
 
   return (
@@ -40,8 +42,10 @@ export const EditProfileForm = () => {
             className="h-36 w-36 items-center text-gray-600"
           >
             {user?.image ? (
-              <img
+              <Image
                 src={user.image}
+                width={40}
+                height={40}
                 alt="Your profile picture"
                 className="h-full w-full rounded-full"
               />

@@ -1,8 +1,6 @@
 import { TRPCError } from "@trpc/server";
-import { z } from "zod";
 
 import { eq, User, zUpdateUser } from "@acme/db";
-import { lucia } from "@acme/lucia";
 
 import { protectedProcedure } from "../trpc";
 

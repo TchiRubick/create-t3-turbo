@@ -23,6 +23,7 @@
     "@acme/lucia": "workspace:*",
     "@acme/validators": "workspace:*",
     "@trpc/server": "catalog:",
+    "resend": "^4.0.0",
     "superjson": "2.2.1",
     "zod": "catalog:"
   },

@@ -18,28 +18,30 @@ import { Input } from "@acme/ui/input";
 import { Label } from "@acme/ui/label";
 import { Textarea } from "@acme/ui/textarea";
 
+import { api } from "~/trpc/react";
+
 const contactFormSection = getSection("contact-form");
-type FormData = {
-  fullName: string;
+
+interface FormData {
+  name: string;
   email: string;
   message: string;
   phone: string;
-};
+}
 
 const zFormSchema = z.object({
-  fullName: z
+  name: z
     .string()
-    .min(5, contactFormSection["input-full-name"]?.["error-message"]),
-  email: z.string().email(contactFormSection["input-email"]?.["error-message"]),
+    .min(5, contactFormSection["input-full-name"]["error-message"]),
+  email: z.string().email(contactFormSection["input-email"]["error-message"]),
   message: z
     .string()
-    .min(10, contactFormSection["input-message"]?.["error-message"]),
-  phone: z
-    .string()
-    .min(10, contactFormSection["input-phone"]?.["error-message"]),
+    .min(10, contactFormSection["input-message"]["error-message"]),
+  phone: z.string().min(10, contactFormSection["input-phone"]["error-message"]),
 });
 
 export const ContactForm = () => {
+  const { mutateAsync } = api.email.contact.useMutation();
   const {
     register,
     handleSubmit,
@@ -49,8 +51,8 @@ export const ContactForm = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    await mutateAsync(data);
   };
 
   return (
@@ -65,31 +67,28 @@ export const ContactForm = () => {
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="fullname">
+              <Label htmlFor="name">
                 {contactFormSection["input-full-name"].label}
               </Label>
               <Input
                 type="text"
                 placeholder={contactFormSection["input-full-name"].placeholder}
-                {...register("fullName")}
+                {...register("name")}
                 className="min-h-12"
               />
-              {errors.fullName && (
-                <p className="text-sm text-red-500">
-                  {errors.fullName.message}
-                </p>
+              {errors.name && (
+                <p className="text-sm text-red-500">{errors.name.message}</p>
               )}
             </div>
             <div className="grid gap-2">
               <Label htmlFor="phone">
-                {contactFormSection["input-phone"]?.label}
+                {contactFormSection["input-phone"].label}
               </Label>
               <Input
                 type="tel"
-                placeholder={contactFormSection["input-phone"]?.placeholder}
+                placeholder={contactFormSection["input-phone"].placeholder}
                 {...register("phone", {
-                  required:
-                    contactFormSection["input-phone"]?.["error-message"],
+                  required: contactFormSection["input-phone"]["error-message"],
                 })}
                 className="min-h-12"
               />
