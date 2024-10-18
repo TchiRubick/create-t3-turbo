@@ -27,13 +27,12 @@ const SigninPage = async () => {
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">
+              <Label htmlFor="identifier">
                 {loginFormSection["username-input"].label}
               </Label>
               <Input
-                name="email"
-                id="email"
-                type="email"
+                name="identifier"
+                id="identifier"
                 placeholder={loginFormSection["username-input"].placeholder}
                 required
               />
@@ -55,7 +54,7 @@ const SigninPage = async () => {
             <Button className="w-full">{loginFormSection.button}</Button>
             <div className="mt-4 text-center text-sm">
               {loginFormSection["no-account-text"]}
-              <Link href="/auth" className="underline">
+              <Link href="/auth/signup" className="underline">
                 {loginFormSection["no-account-link-text"]}
               </Link>
             </div>
