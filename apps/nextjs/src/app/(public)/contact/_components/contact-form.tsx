@@ -16,8 +16,10 @@ import { Input } from "@acme/ui/input";
 import { Label } from "@acme/ui/label";
 import { Textarea } from "@acme/ui/textarea";
 
+import { api } from "~/trpc/react";
+
 type FormData = {
-  fullName: string;
+  name: string;
   email: string;
   message: string;
   phone: string;
@@ -26,21 +28,22 @@ type FormData = {
 const contactFormSection = getSection("contact-form");
 
 const requiredMessage = {
-  fullName: contactFormSection.fields[0]?.["error-message"],
+  name: contactFormSection.fields[0]?.["error-message"],
   phone: contactFormSection.fields[1]?.["error-message"],
   email: contactFormSection.fields[2]?.["error-message"],
   message: contactFormSection.fields[3]?.["error-message"],
 };
 
 export const ContactForm = () => {
+  const { mutateAsync } = api.email.contact.useMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    await mutateAsync(data);
   };
 
   return (
@@ -55,21 +58,19 @@ export const ContactForm = () => {
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="fullname">
+              <Label htmlFor="name">
                 {contactFormSection.fields[0]?.label}
               </Label>
               <Input
                 type="text"
                 placeholder={contactFormSection.fields[0]?.placeholder}
-                {...register("fullName", {
+                {...register("name", {
                   required: contactFormSection.fields[0]?.["error-message"],
                 })}
                 className="min-h-12"
               />
-              {errors.fullName && (
-                <p className="text-sm text-red-500">
-                  {errors.fullName.message}
-                </p>
+              {errors.name && (
+                <p className="text-sm text-red-500">{errors.name.message}</p>
               )}
             </div>
             <div className="grid gap-2">

@@ -15,6 +15,8 @@ export const env = createEnv({
    */
   server: {
     POSTGRES_URL: z.string().url(),
+    RESEND_API_KEY: z.string(),
+    RESEND_RECIPIENT: z.string().email(),
   },
 
   /**
