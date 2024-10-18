@@ -8,12 +8,12 @@
   },
   "price-section": {
     "main-title": "Simple, Transparent Pricing",
-    "title-description": "Choose the plan that's right for you.\nTo ensure that we can put in place and allocate the resources required to the infrastructure before the final delivery. You may pay 30% of the final price after the first demo.",
-    "note": "Local client from Madagascar are proposed to a lower and different price range.",
+    "title-description": "Choose the plan that's right for you.\nYou can have a website for year just for 190$.",
+    "note": "Local client from Madagascar are proposed to a lower and different price range.\nA the end of your contract (1 year), we will provide to you a new cost estimation for the coming year.\nYou have the possibility to not move forward.",
     "price-list": [
       {
         "title": "Basics",
-        "price": "$400",
+        "price": "$432",
         "unity": "year",
         "button": "Get started",
         "features": [
@@ -24,22 +24,31 @@
             "value": "Contact page linked to your Email"
           },
           {
-            "value": "Simple single page on demand"
+            "value": "1 simple static page offered"
           },
           {
-            "value": "Free maintenance for a year"
+            "value": "Terms of services & privacy page offered"
           },
           {
-            "value": "Free domaine name for a year (.com, .mg)"
+            "value": "We host everything"
           },
           {
-            "value": "Ready to be delivered in 2-3 days"
+            "value": "Maintenance"
+          },
+          {
+            "value": "Domain name (.com, .mg)"
+          },
+          {
+            "value": "Allow access to the source code in our GitHub repository as viewer if needed"
+          },
+          {
+            "value": "CMS access if needed"
           }
         ]
       },
       {
         "title": "In-demand",
-        "price": "~$600",
+        "price": "> $599",
         "unity": "year",
         "button": "Get started",
         "features": [
@@ -47,42 +56,45 @@
             "value": "Everything in basics"
           },
           {
-            "value": "In-demand features"
+            "value": "Dynamic website"
           },
           {
-            "value": "Unlimited pages"
+            "value": "Unlimited (paid) pages"
           },
           {
-            "value": "Higher database capacity"
+            "value": "Database enabled"
           },
           {
-            "value": "Better server performance"
+            "value": "Media storage and CDN enabled"
           },
           {
-            "value": "More storage space"
+            "value": "Leverage our speed by paying more"
+          },
+          {
+            "value": "Let us take our time and pay less"
           }
         ]
       },
       {
-        "title": "In-house",
-        "price": "~$10",
-        "unity": "hour / talent",
+        "title": "Budget",
+        "price": "> $190",
+        "unity": "year",
         "button": "Get started",
         "features": [
           {
-            "value": "Choose your talent(s)"
+            "value": "Landing page"
           },
           {
-            "value": "Dedicated and exclusive developer(s) for you"
+            "value": "We host everything"
           },
           {
-            "value": "Take control of everything"
+            "value": "Maintenance"
           },
           {
-            "value": "White labeled"
+            "value": "Domain name (.com, .mg)"
           },
           {
-            "value": "Support"
+            "value": "The rest depends on your budget"
           }
         ]
       }
