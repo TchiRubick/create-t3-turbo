@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS "user" (
 	"password" varchar(255) NOT NULL,
 	"email" varchar(255) NOT NULL,
 	"email_verified" timestamp with time zone,
-	"image" varchar(255)
+	"image" varchar(255),
+	"merchant_id" varchar(255)
 );
 --> statement-breakpoint
 DO $$ BEGIN

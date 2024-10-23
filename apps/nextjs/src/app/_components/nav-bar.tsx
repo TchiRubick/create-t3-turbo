@@ -19,9 +19,9 @@ export const NavBar = async () => {
       <nav className="ml-auto flex items-center gap-4 sm:gap-6">
         <Link
           className="text-sm font-medium underline-offset-4 hover:underline"
-          href="#"
+          href="/products"
         >
-          Features
+          Products
         </Link>
         <Link
           className="text-sm font-medium underline-offset-4 hover:underline"

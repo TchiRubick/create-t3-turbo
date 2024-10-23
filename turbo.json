@@ -60,7 +60,13 @@
       "interactive": true
     }
   },
-  "globalEnv": ["POSTGRES_URL", "PORT", "RESEND_API_KEY", "RESEND_RECIPIENT"],
+  "globalEnv": [
+    "POSTGRES_URL",
+    "PORT",
+    "RESEND_API_KEY",
+    "RESEND_RECIPIENT",
+    "STRIPE_SECRET"
+  ],
   "globalPassThroughEnv": [
     "NODE_ENV",
     "CI",

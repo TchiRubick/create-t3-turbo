@@ -27,6 +27,7 @@
   },
   "prettier": "@acme/prettier-config",
   "dependencies": {
+    "@acme/payment": "workspace:*",
     "@lucia-auth/adapter-drizzle": "^1.1.0",
     "@node-rs/argon2": "^2.0.0",
     "lucia": "^3.2.1"

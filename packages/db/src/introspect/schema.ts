@@ -34,6 +34,8 @@ export const User = pgTable("user", (t) => ({
   email: t.varchar({ length: 255 }).notNull(),
   emailVerified: t.timestamp({ mode: "date", withTimezone: true }),
   image: t.varchar({ length: 255 }),
+  merchantId: t.varchar({ length: 255 }),
+  test: t.varchar({ length: 255 }),
 }));
 
 export const Session = pgTable("session", (t) => ({
