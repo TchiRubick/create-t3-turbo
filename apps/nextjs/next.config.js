@@ -17,6 +17,13 @@ const config = {
   experimental: {
     serverComponentsExternalPackages: ["@node-rs/argon2"],
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "files.stripe.com",
+      },
+    ],
+  },
 };
 
 export default config;

@@ -4,6 +4,7 @@ import { hash } from "@node-rs/argon2";
 import { z } from "zod";
 
 import { db, User } from "@acme/db";
+import { createCustomer } from "@acme/payment";
 
 import { lucia } from "..";
 
@@ -13,16 +14,16 @@ const passwordValidation = z.string().min(6).max(255);
 
 export async function signup(formData: FormData) {
   "use server";
-  const usernameFormData = formData.get("username");
-  const emailFormData = formData.get("email");
-  const passwordFormData = formData.get("password");
 
-  const { error: errorUsername, data: username } =
-    userValidation.safeParse(usernameFormData);
-  const { error: errorEmail, data: email } =
-    emailValidation.safeParse(emailFormData);
-  const { error: errorPassword, data: password } =
-    passwordValidation.safeParse(passwordFormData);
+  const { error: errorUsername, data: username } = userValidation.safeParse(
+    formData.get("username"),
+  );
+  const { error: errorEmail, data: email } = emailValidation.safeParse(
+    formData.get("email"),
+  );
+  const { error: errorPassword, data: password } = passwordValidation.safeParse(
+    formData.get("password"),
+  );
 
   if (errorUsername) {
     throw new Error("Username invalide");
@@ -64,12 +65,15 @@ export async function signup(formData: FormData) {
     throw new Error("Username already taken");
   }
 
+  const customer = await createCustomer(email);
+
   const user = await db
     .insert(User)
     .values({
       username,
       email,
       password: passwordHash,
+      merchantId: customer.id,
     })
     .returning();
 

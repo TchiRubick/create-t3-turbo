@@ -1,6 +1,6 @@
 {
-  "id": "df6f8e2b-da1a-4dde-9727-583b43195040",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "7cd56d7b-62a6-46fe-8403-52d221e10330",
+  "prevId": "df6f8e2b-da1a-4dde-9727-583b43195040",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -126,6 +126,12 @@
         },
         "merchant_id": {
           "name": "merchant_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "test": {
+          "name": "test",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false

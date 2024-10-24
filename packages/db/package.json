@@ -25,8 +25,8 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "push": "pnpm with-env drizzle-kit push",
-    "introspect": "pnpm with-env drizzle-kit introspect",
-    "migrate": "pnpm with-env drizzle-kit generate && pnpm with-env drizzle-kit migrate",
+    "introspect": "MODE=pull pnpm with-env drizzle-kit introspect",
+    "migrate": "MODE=pull pnpm with-env drizzle-kit generate && pnpm with-env drizzle-kit migrate",
     "studio": "pnpm with-env drizzle-kit studio",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
