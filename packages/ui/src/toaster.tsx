@@ -10,12 +10,12 @@ import {
   ToastViewport,
 } from "./toast";
 
-export type ToastType = {
+export interface ToastType {
   title?: string;
   description?: string;
   action?: JSX.Element | boolean;
   id: string;
-};
+}
 
 export function Toaster() {
   const toasts: ToastType[] = useToast();
