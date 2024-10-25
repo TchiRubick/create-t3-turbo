@@ -19,18 +19,24 @@ import {
 
 export const ProductCard = ({ product }: { product: Stripe.Product }) => {
   return (
-    <Card className="mx-auto w-full max-w-md">
+    <Card className="mx-auto h-full w-full max-w-md">
       <CardHeader>
         <CardTitle>{product.name}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <Carousel className="w-full max-w-xs">
+      <CardContent className="flex flex-col items-center space-y-4">
+        <Carousel className="flex w-full max-w-xs justify-center">
           <CarouselContent>
             {product.images.map((image) => (
               <CarouselItem key={image}>
                 <div className="p-1">
                   <Card>
-                    <Image src={image} alt={image} width={300} height={300} />
+                    <Image
+                      src={image}
+                      alt={image}
+                      width={700}
+                      height={300}
+                      className="h-48 w-full rounded-lg object-cover"
+                    />
                   </Card>
                 </div>
               </CarouselItem>
@@ -39,6 +45,8 @@ export const ProductCard = ({ product }: { product: Stripe.Product }) => {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+      </CardContent>
+      <CardContent className="flex flex-col">
         <p className="text-muted-foreground">{product.description}</p>
         <p className="text-2xl font-bold">
           ${product.default_price?.toString()}
