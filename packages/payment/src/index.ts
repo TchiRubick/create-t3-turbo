@@ -40,3 +40,27 @@ export const getProducts = async () => {
 
   return products.data;
 };
+
+export const getOneProduct = async (productId: string) => {
+  const product = await stripe.products.retrieve(productId);
+  return product;
+};
+
+export const paymentLink = async (productId: string) => {
+  const price = await stripe.prices.create({
+    currency: "usd",
+    unit_amount: 1000,
+    product: productId,
+  });
+
+  const createPayment = await stripe.paymentLinks.create({
+    line_items: [
+      {
+        price: price.id,
+        quantity: 1,
+      },
+    ],
+  });
+
+  return createPayment;
+};

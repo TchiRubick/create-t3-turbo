@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 
 import type { Stripe } from "@acme/payment";
 import { Button } from "@acme/ui/button";
@@ -47,13 +50,15 @@ export const ProductCard = ({ product }: { product: Stripe.Product }) => {
         </Carousel>
       </CardContent>
       <CardContent className="flex flex-col">
-        <p className="text-muted-foreground">{product.description}</p>
+        <p className="text-muted-foreground">{product.id}</p>
         <p className="text-2xl font-bold">
           ${product.default_price?.toString()}
         </p>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Add to Cart</Button>
+        <Link href={`/products/${product.id}`} className="w-full">
+          <Button className="w-full">Details</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
